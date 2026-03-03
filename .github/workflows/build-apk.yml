@@ -20,8 +20,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Gradle
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle 8.6
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.6'
 
       - name: Create local.properties
         run: |
@@ -31,11 +36,21 @@ jobs:
           PROPS
 
       - name: Build debug APK
-        run: gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v3
         with:
           name: Jarvis-Debug-APK
           path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
+
+      - name: Upload build outputs (for debugging)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Jarvis-Build-Outputs
+          path: |
+            app/build/reports
+            app/build/outputs
           retention-days: 7
