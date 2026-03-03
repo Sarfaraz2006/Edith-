@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_dark">#0D0D0D</color>
+    <color name="primary_blue">#4A90E2</color>
+    <color name="orb_listening">#4A90E2</color>
+    <color name="orb_thinking">#8E44AD</color>
+    <color name="orb_speaking">#2ECC71</color>
+    <color name="orb_idle">#555555</color>
+    <color name="orb_error">#D64545</color>
+</resources>
